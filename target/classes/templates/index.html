@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th = "http://www.thymeleaf.org">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>TechBlog</title>
     </head>
     <body>
+        <header th:replace="layout :: logged-out"></header>
         <h1>Hello, Welcome to the tech world.</h1>
         <div th:each="p : ${all_posts}">
             <br>

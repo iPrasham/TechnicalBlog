@@ -11,21 +11,20 @@ import techblog.services.PostService;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-
 @Controller
-public class HomeController {
+public class PostController {
 
     @Autowired
     PostService postService;
 
-    @RequestMapping("/")
-    public String index(Model model, HttpSession session){
+    @RequestMapping("/posts")
+    public String userPostPage(Model model, HttpSession session){
         User logged = (User)session.getAttribute("logged_user");
-        if(logged != null){
-            return "redirect:/posts";
+        if(logged == null){
+            return "user/login";
         }
-        ArrayList<Post> posts = postService.getAllPosts();
-        model.addAttribute("all_posts", posts);
-        return "index";
+        ArrayList<Post> posts = postService.getUserPosts();
+        model.addAttribute("list_of_posts", posts);
+        return "posts";
     }
 }

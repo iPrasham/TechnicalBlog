@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+    <header th:replace="layout :: logged-in"></header>
+    <h1>Hello, Welcome to the tech world.</h1>
+    <div th:each="p : ${list_of_posts}">
+        <br>
+            <h3 th:text="${p.title}"></h3>
+            <i><p th:text="${p.date}"></p></i>
+            <p th:text="${p.body}"></p>
+        <br>
+    </div>
+</body>
+</html>
